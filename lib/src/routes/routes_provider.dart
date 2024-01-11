@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habit/src/features/home/views/home_screen.dart';
 import 'package:habit/src/features/introduction/views/introduction_screen.dart';
+import 'package:habit/src/features/login/views/login_screen.dart';
 
 @immutable
 class Routes {
@@ -36,6 +37,16 @@ final habitRoutes = <RouteBase>[
   GoRoute(
     name: Routes.introduction['name'],
     path: Routes.introduction['path']!,
+    builder: (context, state) => const IntroductionScreen(),
+  ),
+  GoRoute(
+    name: Routes.login['name'],
+    path: Routes.login['path']!,
+    builder: (context, state) => const LoginScreen(),
+  ),
+  GoRoute(
+    name: Routes.signUp['name'],
+    path: Routes.signUp['path']!,
     builder: (context, state) => const IntroductionScreen(),
   ),
 ];
