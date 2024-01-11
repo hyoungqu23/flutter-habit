@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:habit/src/routes/routes_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: HabitApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HabitApp extends ConsumerWidget {
+  const HabitApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final routerConfig = ref.watch(routesProvider);
+
+    return MaterialApp.router(
+      title: 'Habit',
+      routerConfig: routerConfig,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(),
     );
   }
 }
