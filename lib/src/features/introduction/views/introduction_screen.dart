@@ -35,12 +35,11 @@ class _IntroductionScreenState extends State<IntroductionScreen>
 
   @override
   void initState() {
+    super.initState();
     tabController = TabController(
       length: introductions.length,
       vsync: this,
-    );
-    tabController.addListener(handleTabSelection);
-    super.initState();
+    )..addListener(handleTab);
   }
 
   @override
@@ -49,10 +48,8 @@ class _IntroductionScreenState extends State<IntroductionScreen>
     super.dispose();
   }
 
-  void handleTabSelection() {
-    if (tabController.indexIsChanging) {
-      setState(() {});
-    }
+  void handleTab() {
+    setState(() {});
   }
 
   @override
@@ -74,12 +71,17 @@ class _IntroductionScreenState extends State<IntroductionScreen>
               child: TabBarView(
                 controller: tabController,
                 children: [
-                  ...introductions.map(
-                    (e) => OnBoardingTab(
-                      title: e['title'],
-                      imageAsset: e['imageAsset'],
+                  for (var tab in introductions)
+                    OnBoardingTab(
+                      title: tab['title'],
+                      imageAsset: tab['imageAsset'],
                     ),
-                  )
+                  // ...introductions.map(
+                  //   (e) => OnBoardingTab(
+                  //     title: e['title'],
+                  //     imageAsset: e['imageAsset'],
+                  //   ),
+                  // )
                 ],
               ),
             ),
