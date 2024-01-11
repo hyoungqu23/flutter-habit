@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habit/src/features/home/views/home_screen.dart';
 import 'package:habit/src/features/introduction/views/introduction_screen.dart';
 
 @immutable
@@ -30,7 +31,7 @@ final habitRoutes = <RouteBase>[
   GoRoute(
     name: Routes.home['name'],
     path: Routes.home['path']!,
-    builder: (context, state) => const IntroductionScreen(),
+    builder: (context, state) => const HomeScreen(),
   ),
   GoRoute(
     name: Routes.introduction['name'],
@@ -41,7 +42,7 @@ final habitRoutes = <RouteBase>[
 
 final routesProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: Routes.home['path'],
+    initialLocation: Routes.introduction['path'],
     routes: habitRoutes,
   );
 });
