@@ -21,7 +21,12 @@ class HabitApp extends ConsumerWidget {
       title: 'Habit',
       routerConfig: routerConfig,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.transparent,
+        bottomSheetTheme: const BottomSheetThemeData(
+          backgroundColor: Colors.transparent,
+        ),
+      ),
     );
   }
 }
