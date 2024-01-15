@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:habit/src/features/login/views/widgets/social_login_button.dart';
+import 'package:habit/src/routes/routes_provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -146,34 +148,35 @@ class LoginScreen extends StatelessWidget {
                           color: Color(0xFFFDA758),
                         ),
                         decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              Icons.lock_outline_rounded,
-                              size: 16,
+                          prefixIcon: const Icon(
+                            Icons.lock_outline_rounded,
+                            size: 16,
+                          ),
+                          prefixIconColor: const Color(0xFFFDA758),
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(12),
                             ),
-                            prefixIconColor: const Color(0xFFFDA758),
-                            border: const OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(12),
-                              ),
+                          ),
+                          filled: true,
+                          fillColor: const Color(0xFFFFF6ED),
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 16,
+                            horizontal: 12,
+                          ),
+                          hintText: 'Password',
+                          hintStyle: TextStyle(
+                            color: const Color(0xFF573353).withOpacity(0.5),
+                          ),
+                          suffix: const Text(
+                            'Show',
+                            style: TextStyle(
+                              fontSize: 12,
+                              decoration: TextDecoration.underline,
                             ),
-                            filled: true,
-                            fillColor: const Color(0xFFFFF6ED),
-                            contentPadding: const EdgeInsets.symmetric(
-                              vertical: 16,
-                              horizontal: 12,
-                            ),
-                            hintText: 'Password',
-                            hintStyle: TextStyle(
-                              color: const Color(0xFF573353).withOpacity(0.5),
-                            ),
-                            suffix: const Text(
-                              'Show',
-                              style: TextStyle(
-                                fontSize: 12,
-                                decoration: TextDecoration.underline,
-                              ),
-                            )),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -211,9 +214,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Column(
+                Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                       child: TextButton(
                         onPressed: null,
@@ -229,17 +232,19 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 6,
                     ),
                     SizedBox(
                       height: 22,
                       child: TextButton(
-                        onPressed: null,
-                        style: ButtonStyle(
+                        onPressed: () {
+                          context.pushNamed(Routes.register['name']!);
+                        },
+                        style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Don’t have an account? Sign up',
                           style: TextStyle(
                             color: Color(0xFF573353),
