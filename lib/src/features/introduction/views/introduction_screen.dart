@@ -88,7 +88,7 @@ class _IntroductionScreenState extends State<IntroductionScreen>
             tabController.index == 3
                 ? ElevatedButton(
                     onPressed: () {
-                      context.pushNamed(Routes.home['name']!);
+                      context.pushNamed(Routes.login['name']!);
                     },
                     style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
@@ -125,7 +125,7 @@ class _IntroductionScreenState extends State<IntroductionScreen>
                       TextButton(
                         onPressed: () {
                           context.pushNamed(
-                            Routes.home['name']!,
+                            Routes.login['name']!,
                           );
                         },
                         child: const Text(
