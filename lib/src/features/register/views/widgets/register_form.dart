@@ -99,7 +99,7 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
             isPassword: true,
-            keyBoardType: TextInputType.none,
+            keyBoardType: TextInputType.visiblePassword,
           ),
           // const SizedBox(
           //   height: 6,
